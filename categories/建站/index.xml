@@ -6,10 +6,23 @@
     <description>Recent content in 建站 on 随风潜入夜</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Jan 2019 15:27:06 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Dec 2019 16:16:31 +0800</lastBuildDate>
     
 	<atom:link href="https://microgap.github.io/categories/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo布署到Github</title>
+      <link>https://microgap.github.io/2019/12/2d72055ed9aa6e2bcfae11059d7c1dd41c511663.html</link>
+      <pubDate>Tue, 03 Dec 2019 16:16:31 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/2019/12/2d72055ed9aa6e2bcfae11059d7c1dd41c511663.html</guid>
+      <description>在github新建站点仓库 仓库名称{Username}.github.io, 例:microgap.github.io
+ 非github付费用户,站点仓库必须是Public类型 更多Github Pages相关内容参考这里  在github新建仓库用于存放Hugo源文件 例: Blog (_此仓库可以是Public,也可以是Private_)  将存放站点源文件的仓库克隆到本地 git clone git@github.com:Microgap/Blog.git &amp;amp;&amp;amp; cd Blog 复制Hugo站点源文件到Blog仓库 检查站点是否正常
+hugo server -e m10c #m10c 是配置文件名称,按需修改 站点运行正常后,停止hugo服务,并删除Public文件夹
+rm -rf public 将站点仓库作为子模块添加到源文件仓库 git submodule add -b master git@github.com:Microgap/microgap.github.io.git public 新建脚本 deploy.sh 脚本内容
+#!/bin/sh  # If a command fails then the deploy stops set -e printf &amp;#34;\033[0;32mDeploying updates to GitHub...\033[0m\n&amp;#34; # Build the project. hugo -e m10c # 此处按需更换使用的配置文件` # Go To Public folder cd public # Add changes to git.</description>
+    </item>
     
     <item>
       <title>Hexo使用NexT主题配置评论系统</title>

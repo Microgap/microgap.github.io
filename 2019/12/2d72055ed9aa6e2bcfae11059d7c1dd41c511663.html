@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Hugo布署到Github // 随风潜入夜</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.61.0-DEV" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://microgap.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-153799005-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hugo布署到Github"/>
+<meta name="twitter:description" content="在github新建站点仓库 仓库名称{Username}.github.io, 例:microgap.github.io
+ 非github付费用户,站点仓库必须是Public类型 更多Github Pages相关内容参考这里  在github新建仓库用于存放Hugo源文件 例: Blog (_此仓库可以是Public,也可以是Private_)  将存放站点源文件的仓库克隆到本地 git clone git@github.com:Microgap/Blog.git &amp;&amp; cd Blog 复制Hugo站点源文件到Blog仓库 检查站点是否正常
+hugo server -e m10c #m10c 是配置文件名称,按需修改 站点运行正常后,停止hugo服务,并删除Public文件夹
+rm -rf public 将站点仓库作为子模块添加到源文件仓库 git submodule add -b master git@github.com:Microgap/microgap.github.io.git public 新建脚本 deploy.sh 脚本内容
+#!/bin/sh  # If a command fails then the deploy stops set -e printf &#34;\033[0;32mDeploying updates to GitHub...\033[0m\n&#34; # Build the project. hugo -e m10c # 此处按需更换使用的配置文件` # Go To Public folder cd public # Add changes to git."/>
+
+    <meta property="og:title" content="Hugo布署到Github" />
+<meta property="og:description" content="在github新建站点仓库 仓库名称{Username}.github.io, 例:microgap.github.io
+ 非github付费用户,站点仓库必须是Public类型 更多Github Pages相关内容参考这里  在github新建仓库用于存放Hugo源文件 例: Blog (_此仓库可以是Public,也可以是Private_)  将存放站点源文件的仓库克隆到本地 git clone git@github.com:Microgap/Blog.git &amp;&amp; cd Blog 复制Hugo站点源文件到Blog仓库 检查站点是否正常
+hugo server -e m10c #m10c 是配置文件名称,按需修改 站点运行正常后,停止hugo服务,并删除Public文件夹
+rm -rf public 将站点仓库作为子模块添加到源文件仓库 git submodule add -b master git@github.com:Microgap/microgap.github.io.git public 新建脚本 deploy.sh 脚本内容
+#!/bin/sh  # If a command fails then the deploy stops set -e printf &#34;\033[0;32mDeploying updates to GitHub...\033[0m\n&#34; # Build the project. hugo -e m10c # 此处按需更换使用的配置文件` # Go To Public folder cd public # Add changes to git." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://microgap.github.io/2019/12/2d72055ed9aa6e2bcfae11059d7c1dd41c511663.html" />
+<meta property="article:published_time" content="2019-12-03T16:16:31+08:00" />
+<meta property="article:modified_time" content="2019-12-03T17:31:01+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://microgap.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>随风潜入夜</h1>
+      <p>安不下心，放不开手</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/microgap" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Hugo布署到Github</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Dec 3, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://microgap.github.io/tags/hugo.html">hugo</a></div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="github">在github新建站点仓库</h3>
+<p>仓库名称{Username}.github.io, 例:microgap.github.io</p>
+<ul>
+<li>非github付费用户,站点仓库必须是Public类型</li>
+<li><a href="https://help.github.com/en/github/working-with-github-pages/about-github-pages">更多Github Pages相关内容参考这里</a></li>
+</ul>
+<h3 id="githubhugo">在github新建仓库用于存放Hugo源文件</h3>
+<pre><code>例: Blog (_此仓库可以是Public,也可以是Private_)
+</code></pre>
+<h3 id="heading">将存放站点源文件的仓库克隆到本地</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:Microgap/Blog.git <span style="color:#f92672">&amp;&amp;</span> cd Blog
+</code></pre></div><h3 id="hugoblog">复制Hugo站点源文件到Blog仓库</h3>
+<p>检查站点是否正常</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo server -e m10c <span style="color:#75715e">#m10c 是配置文件名称,按需修改</span>
+</code></pre></div><p>站点运行正常后,停止hugo服务,并删除Public文件夹</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf public
+</code></pre></div><h3 id="heading1">将站点仓库作为子模块添加到源文件仓库</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git submodule add -b master git@github.com:Microgap/microgap.github.io.git public
+</code></pre></div><h3 id="-deploysh">新建脚本 deploy.sh</h3>
+<p>脚本内容</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># If a command fails then the deploy stops</span>
+set -e
+
+printf <span style="color:#e6db74">&#34;\033[0;32mDeploying updates to GitHub...\033[0m\n&#34;</span>
+
+<span style="color:#75715e"># Build the project.</span>
+hugo -e m10c <span style="color:#75715e"># 此处按需更换使用的配置文件`</span>
+
+<span style="color:#75715e"># Go To Public folder</span>
+cd public
+
+<span style="color:#75715e"># Add changes to git.</span>
+git add .
+
+<span style="color:#75715e"># Commit changes.</span>
+msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">rebuilding site </span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$*<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+	msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$*<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">fi</span>
+git commit -m <span style="color:#e6db74">&#34;</span>$msg<span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># Push source and build repos.</span>
+git push origin master
+</code></pre></div><h3 id="heading2">运行脚本,完成布署</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sh ./deploy.sh
+</code></pre></div>
+    </div>
+    <div class="post-footer">
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "microgap" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
