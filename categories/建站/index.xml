@@ -6,17 +6,17 @@
     <description>Recent content in 建站 on 随风潜入夜</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Dec 2019 11:57:30 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 Jan 2019 15:27:06 +0800</lastBuildDate>
     
 	<atom:link href="https://microgap.github.io/categories/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hexo使用NexT主题配置评论系统</title>
-      <link>https://microgap.github.io/2019/12/3cb9a68dd1b66525171ef0a3eefff6a977f1b4ea.html</link>
-      <pubDate>Tue, 03 Dec 2019 11:57:30 +0800</pubDate>
+      <link>https://microgap.github.io/2019/01/3cb9a68dd1b66525171ef0a3eefff6a977f1b4ea.html</link>
+      <pubDate>Tue, 22 Jan 2019 15:27:06 +0800</pubDate>
       
-      <guid>https://microgap.github.io/2019/12/3cb9a68dd1b66525171ef0a3eefff6a977f1b4ea.html</guid>
+      <guid>https://microgap.github.io/2019/01/3cb9a68dd1b66525171ef0a3eefff6a977f1b4ea.html</guid>
       <description>使用next主题，配置评论系统 next内置集成多种评论系统，通过简单的设置即可让网站增加评论功能，目前支持以下几种
 # Disqus # Changyan # Valine # LiveRe # Gitment # Gitalk 我这里使用Disqus评论系统，到 https://disqus.com 网站注册账号，然后按提示一步步下来即可，注意申请时的shortname 申请完成后，打开next主题下的_config.yml文件，找到
 disqus: enable: false shortname: #填写申请到的shortname count: true lazyload: false 将enable改为true, shortname填上之前申请时生成的shortname，网站的disqus评论功能就可以使用了。
