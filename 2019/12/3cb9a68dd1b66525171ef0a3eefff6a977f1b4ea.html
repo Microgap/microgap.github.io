@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Hexo使用NexT主题配置评论系统 // 随风潜入夜</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.61.0-DEV" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://microgap.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hexo使用NexT主题配置评论系统"/>
+<meta name="twitter:description" content="使用next主题，配置评论系统 next内置集成多种评论系统，通过简单的设置即可让网站增加评论功能，目前支持以下几种
+# Disqus # Changyan # Valine # LiveRe # Gitment # Gitalk 我这里使用Disqus评论系统，到 https://disqus.com 网站注册账号，然后按提示一步步下来即可，注意申请时的shortname 申请完成后，打开next主题下的_config.yml文件，找到
+disqus: enable: false shortname: #填写申请到的shortname count: true lazyload: false 将enable改为true, shortname填上之前申请时生成的shortname，网站的disqus评论功能就可以使用了。
+关闭自建page的评论功能 通过上面步骤设置完disqus评论后，发现除了“首页”以及“归档”两个系统自带的模块外，其它自建的页面（如：标签,分类)都可以直行评论，这并不符合实际需求，所以需要单独关闭这些page的评论功能
+进入站点的source目录（hexo根目录下的source目录）然后找到对应的page目录，例如categories(分类),打开该目录下的index.md文件，在Front-matter处增加字段comments: false ,该页面的评论功能就被关闭了，以此类推，分别修改所有自建page即可
+title: 分类 date: 2019-01-22 12:31:13 type: categories comments: false 修改scaffolds文件夹下的page.md文件 修改scaffolds文件夹下的page.md文件，添加comments: false，这样以后所有新建的page默认都是关闭评论功能"/>
+
+    <meta property="og:title" content="Hexo使用NexT主题配置评论系统" />
+<meta property="og:description" content="使用next主题，配置评论系统 next内置集成多种评论系统，通过简单的设置即可让网站增加评论功能，目前支持以下几种
+# Disqus # Changyan # Valine # LiveRe # Gitment # Gitalk 我这里使用Disqus评论系统，到 https://disqus.com 网站注册账号，然后按提示一步步下来即可，注意申请时的shortname 申请完成后，打开next主题下的_config.yml文件，找到
+disqus: enable: false shortname: #填写申请到的shortname count: true lazyload: false 将enable改为true, shortname填上之前申请时生成的shortname，网站的disqus评论功能就可以使用了。
+关闭自建page的评论功能 通过上面步骤设置完disqus评论后，发现除了“首页”以及“归档”两个系统自带的模块外，其它自建的页面（如：标签,分类)都可以直行评论，这并不符合实际需求，所以需要单独关闭这些page的评论功能
+进入站点的source目录（hexo根目录下的source目录）然后找到对应的page目录，例如categories(分类),打开该目录下的index.md文件，在Front-matter处增加字段comments: false ,该页面的评论功能就被关闭了，以此类推，分别修改所有自建page即可
+title: 分类 date: 2019-01-22 12:31:13 type: categories comments: false 修改scaffolds文件夹下的page.md文件 修改scaffolds文件夹下的page.md文件，添加comments: false，这样以后所有新建的page默认都是关闭评论功能" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://microgap.github.io/2019/12/3cb9a68dd1b66525171ef0a3eefff6a977f1b4ea.html" />
+<meta property="article:published_time" content="2019-12-03T11:57:30+08:00" />
+<meta property="article:modified_time" content="2019-12-03T13:21:16+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://microgap.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>随风潜入夜</h1>
+      <p>安不下心，放不开手</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/microgap" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Hexo使用NexT主题配置评论系统</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Dec 3, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://microgap.github.io/tags/hexo.html">hexo</a><a class="tag" href="https://microgap.github.io/tags/next.html">next</a></div></div>
+    </header>
+    <div class="post-content">
+      <h2 id="next">使用next主题，配置评论系统</h2>
+<p>next内置集成多种评论系统，通过简单的设置即可让网站增加评论功能，目前支持以下几种</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#75715e"># Disqus</span>
+<span style="color:#75715e"># Changyan</span>
+<span style="color:#75715e"># Valine</span>
+<span style="color:#75715e"># LiveRe</span>
+<span style="color:#75715e"># Gitment</span>
+<span style="color:#75715e"># Gitalk</span></code></pre></div>
+<!-- raw HTML omitted -->
+<p>我这里使用Disqus评论系统，到 <a href="https://disqus.com">https://disqus.com</a> 网站注册账号，然后按提示一步步下来即可，注意申请时的shortname
+申请完成后，打开next主题下的_config.yml文件，找到</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">disqus:
+  enable: <span style="color:#66d9ef">false</span>
+  shortname: <span style="color:#75715e">#填写申请到的shortname</span>
+  count: <span style="color:#66d9ef">true</span>
+  lazyload: <span style="color:#66d9ef">false</span></code></pre></div>
+<p>将enable改为true, shortname填上之前申请时生成的shortname，网站的disqus评论功能就可以使用了。</p>
+<h2 id="page">关闭自建page的评论功能</h2>
+<p>通过上面步骤设置完disqus评论后，发现除了“首页”以及“归档”两个系统自带的模块外，其它自建的页面（如：标签,分类)都可以直行评论，这并不符合实际需求，所以需要单独关闭这些page的评论功能</p>
+<p>进入站点的source目录（hexo根目录下的source目录）然后找到对应的page目录，例如categories(分类),打开该目录下的index.md文件，在Front-matter处增加字段comments: false ,该页面的评论功能就被关闭了，以此类推，分别修改所有自建page即可</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">title: 分类
+date: <span style="color:#e6db74">2019-01-22 12:31:13</span>
+type: categories
+comments: <span style="color:#66d9ef">false</span></code></pre></div>
+<h2 id="scaffoldspagemd">修改scaffolds文件夹下的page.md文件</h2>
+<p>修改scaffolds文件夹下的page.md文件，添加comments: false，这样以后所有新建的page默认都是关闭评论功能</p>
+
+    </div>
+    <div class="post-footer">
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "microgap" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

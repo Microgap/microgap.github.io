@@ -6,9 +6,19 @@
     <description>Recent content in Categories on 随风潜入夜</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 03 Dec 2019 11:57:30 +0800</lastBuildDate>
     
 	<atom:link href="https://microgap.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>建站</title>
+      <link>https://microgap.github.io/categories/%E5%BB%BA%E7%AB%99.html</link>
+      <pubDate>Tue, 03 Dec 2019 11:57:30 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/categories/%E5%BB%BA%E7%AB%99.html</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
