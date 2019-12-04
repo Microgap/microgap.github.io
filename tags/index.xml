@@ -6,10 +6,37 @@
     <description>Recent content in Tags on 随风潜入夜</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Dec 2019 16:16:31 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Dec 2019 21:03:40 +0800</lastBuildDate>
     
 	<atom:link href="https://microgap.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gcc</title>
+      <link>https://microgap.github.io/tags/gcc.html</link>
+      <pubDate>Wed, 04 Dec 2019 21:03:40 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/tags/gcc.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://microgap.github.io/tags/go.html</link>
+      <pubDate>Wed, 04 Dec 2019 21:03:40 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/tags/go.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MinGW</title>
+      <link>https://microgap.github.io/tags/mingw.html</link>
+      <pubDate>Wed, 04 Dec 2019 21:03:40 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/tags/mingw.html</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>hugo</title>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MinGW on 随风潜入夜</title>
+    <link>https://microgap.github.io/tags/mingw.html</link>
+    <description>Recent content in MinGW on 随风潜入夜</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 04 Dec 2019 21:03:40 +0800</lastBuildDate>
+    
+	<atom:link href="https://microgap.github.io/tags/mingw/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang 在 Windows 10 编译找不到 gcc 的解决方法</title>
+      <link>https://microgap.github.io/2019/12/e4ca4ddb8de978d6cf139233c7ceb7821a94a6d6.html</link>
+      <pubDate>Wed, 04 Dec 2019 21:03:40 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/2019/12/e4ca4ddb8de978d6cf139233c7ceb7821a94a6d6.html</guid>
+      <description>学习Go语言，用到了Sqlite数据库，在Mac中没遇到问题，转到Windows 10后，编译时报找不到gcc的错误
+# runtime/cgo exec: &amp;#34;gcc&amp;#34;: executable file not found in %PATH% exit status 2 Process exiting with code: 1 这是由于Windows环境中没有gcc编译器，首先想到的是安装cgywin，安装过程中要勾选gcc-core模块，安装后，将 {cgywin安装路径}\bin 添加至环境变量Path中
+再次编译
+# runtime/cgo gcc_libinit_windows.c: 在函数‘x_cgo_sys_thread_create’中: gcc_libinit_windows.c:57:12: 错误：implicit declaration of function ‘_beginthread’; did you mean ‘OpenThread’? [-Werror=implicit-function-declaration] thandle = _beginthread(func, 0, arg); ^~~~~~~~~~~~ OpenThread WTF?
+上网找原因，Gihub上有人遇到了同样的问题 issus，基本没什么办法，建议更换MinGW
+好吧，再装个MinGW，MinGW是32位的，如果想装64位的需要下载MinGW-W64
+ 这里也可以使用Golang官方推荐的TDM-GCC
+ 下载后安装，默认路径，arch选择x86_64，安装完成后设置 C:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin 到环境变量Path，别忘了把之前设置的cgywin的路径给删掉
+ “x86_64-8.1.0-win32-seh-rt_v6-rev0” 是安装的MinGW版本号
+ 重启VS Code，F5运行
+API server listening at: 127.0.0.1:49263 [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.</description>
+    </item>
+    
+  </channel>
+</rss>
