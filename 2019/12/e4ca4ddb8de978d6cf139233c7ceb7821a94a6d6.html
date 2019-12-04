@@ -29,7 +29,7 @@ if (!doNotTrack) {
 # runtime/cgo exec: &#34;gcc&#34;: executable file not found in %PATH% exit status 2 Process exiting with code: 1 这是由于Windows环境中没有gcc编译器，首先想到的是安装cgywin，安装过程中要勾选gcc-core模块，安装后，将 {cgywin安装路径}\bin 添加至环境变量Path中
 再次编译
 # runtime/cgo gcc_libinit_windows.c: 在函数‘x_cgo_sys_thread_create’中: gcc_libinit_windows.c:57:12: 错误：implicit declaration of function ‘_beginthread’; did you mean ‘OpenThread’? [-Werror=implicit-function-declaration] thandle = _beginthread(func, 0, arg); ^~~~~~~~~~~~ OpenThread WTF?
-上网找原因，Gihub上有人遇到了同样的问题 issus，基本没什么办法，建议更换MinGW
+上网找原因，Gihub上有人遇到了同样的问题 issue，基本没什么办法，建议更换MinGW
 好吧，再装个MinGW，MinGW是32位的，如果想装64位的需要下载MinGW-W64
  这里也可以使用Golang官方推荐的TDM-GCC
  下载后安装，默认路径，arch选择x86_64，安装完成后设置 C:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin 到环境变量Path，别忘了把之前设置的cgywin的路径给删掉
@@ -42,7 +42,7 @@ API server listening at: 127.0.0.1:49263 [GIN-debug] [WARNING] Creating an Engin
 # runtime/cgo exec: &#34;gcc&#34;: executable file not found in %PATH% exit status 2 Process exiting with code: 1 这是由于Windows环境中没有gcc编译器，首先想到的是安装cgywin，安装过程中要勾选gcc-core模块，安装后，将 {cgywin安装路径}\bin 添加至环境变量Path中
 再次编译
 # runtime/cgo gcc_libinit_windows.c: 在函数‘x_cgo_sys_thread_create’中: gcc_libinit_windows.c:57:12: 错误：implicit declaration of function ‘_beginthread’; did you mean ‘OpenThread’? [-Werror=implicit-function-declaration] thandle = _beginthread(func, 0, arg); ^~~~~~~~~~~~ OpenThread WTF?
-上网找原因，Gihub上有人遇到了同样的问题 issus，基本没什么办法，建议更换MinGW
+上网找原因，Gihub上有人遇到了同样的问题 issue，基本没什么办法，建议更换MinGW
 好吧，再装个MinGW，MinGW是32位的，如果想装64位的需要下载MinGW-W64
  这里也可以使用Golang官方推荐的TDM-GCC
  下载后安装，默认路径，arch选择x86_64，安装完成后设置 C:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin 到环境变量Path，别忘了把之前设置的cgywin的路径给删掉
@@ -52,7 +52,7 @@ API server listening at: 127.0.0.1:49263 [GIN-debug] [WARNING] Creating an Engin
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://microgap.github.io/2019/12/e4ca4ddb8de978d6cf139233c7ceb7821a94a6d6.html" />
 <meta property="article:published_time" content="2019-12-04T21:03:40+08:00" />
-<meta property="article:modified_time" content="2019-12-04T22:34:58+08:00" />
+<meta property="article:modified_time" content="2019-12-04T22:37:24+08:00" />
 
 
   </head>
@@ -111,7 +111,7 @@ gcc_libinit_windows.c:57:12: 错误：implicit declaration of <span style="color
             ^~~~~~~~~~~~
             OpenThread
 </code></pre></div><p>WTF?</p>
-<p>上网找原因，Gihub上有人遇到了同样的问题 <a href="https://github.com/golang/go/issues/12029">issus</a>，基本没什么办法，建议更换MinGW</p>
+<p>上网找原因，Gihub上有人遇到了同样的问题 <a href="https://github.com/golang/go/issues/12029">issue</a>，基本没什么办法，建议更换MinGW</p>
 <p>好吧，再装个MinGW，MinGW是32位的，如果想装64位的需要下载<a href="https://sourceforge.net/projects/mingw-w64/">MinGW-W64</a></p>
 <blockquote>
 <p>这里也可以使用Golang官方推荐的<a href="http://tdm-gcc.tdragon.net/">TDM-GCC</a></p>
