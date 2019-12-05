@@ -6,10 +6,25 @@
     <description>Recent content on 随风潜入夜</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Dec 2019 21:03:40 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 05 Dec 2019 16:02:41 +0800</lastBuildDate>
     
 	<atom:link href="https://microgap.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang 开发Web Api Services热加载</title>
+      <link>https://microgap.github.io/2019/12/729b52d0df24f84447c24f1e491a0d3573b78d28.html</link>
+      <pubDate>Thu, 05 Dec 2019 16:02:41 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/2019/12/729b52d0df24f84447c24f1e491a0d3573b78d28.html</guid>
+      <description>学习Go语言开发Webservice Api过程中,每次想要看一下代码修改后的结果,都需要重新编译一次代码后才可以在浏览器看到结果,虽然VS Code的F5很好用,但还是想要减少一些手动操作,于是上网找解决办法😏.
+ 使用fswatch工具 参考 使用gin工具 Github  相关的实现方法不少,懒得找了,正巧,我用的web框架也叫gin,这里就用第二种方式吧
+安装gin工具
+go get -u github.com/codegangsta/gin 然后到项目根目录下输入命令
+gin run main.go [gin] Listening on port 3000 [gin] Building... 冲杯🍵等一下
+gin run main.go [gin] Listening on port 3000 [gin] Building... [gin] Build finished 两杯咖啡下肚,仍然停在这里,难道我打开方式不对? 浏览器打开 http://localhost:3000,&amp;ldquo;该网页无法正常运作&amp;rdquo;,好消息是后台有了新的进展
+[gin] Listening on port 3000 [gin] Building... [gin] Build finished 2019/12/05 16:44:25 http: proxy error: dial tcp [::1]:3001: connect: connection refused [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.</description>
+    </item>
     
     <item>
       <title>Golang 在 Windows 10 编译找不到 gcc 的解决方法</title>
@@ -21,7 +36,7 @@
 # runtime/cgo exec: &amp;#34;gcc&amp;#34;: executable file not found in %PATH% exit status 2 Process exiting with code: 1 这是由于Windows环境中没有gcc编译器，首先想到的是安装cgywin，安装过程中要勾选gcc-core模块，安装后，将 {cgywin安装路径}\bin 添加至环境变量Path中
 再次编译
 # runtime/cgo gcc_libinit_windows.c: 在函数‘x_cgo_sys_thread_create’中: gcc_libinit_windows.c:57:12: 错误：implicit declaration of function ‘_beginthread’; did you mean ‘OpenThread’? [-Werror=implicit-function-declaration] thandle = _beginthread(func, 0, arg); ^~~~~~~~~~~~ OpenThread WTF?
-上网找原因，Gihub上有人遇到了同样的问题 issue，基本没什么办法，建议更换MinGW
+上网找原因，Gihub上有人遇到了同样的问题，基本没什么办法，建议更换MinGW
 好吧，再装个MinGW，MinGW是32位的，如果想装64位的需要下载MinGW-W64
  这里也可以使用Golang官方推荐的TDM-GCC
  下载后安装，默认路径，arch选择x86_64，安装完成后设置 C:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin 到环境变量Path，别忘了把之前设置的cgywin的路径给删掉

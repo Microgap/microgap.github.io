@@ -21,7 +21,7 @@
 # runtime/cgo exec: &amp;#34;gcc&amp;#34;: executable file not found in %PATH% exit status 2 Process exiting with code: 1 这是由于Windows环境中没有gcc编译器，首先想到的是安装cgywin，安装过程中要勾选gcc-core模块，安装后，将 {cgywin安装路径}\bin 添加至环境变量Path中
 再次编译
 # runtime/cgo gcc_libinit_windows.c: 在函数‘x_cgo_sys_thread_create’中: gcc_libinit_windows.c:57:12: 错误：implicit declaration of function ‘_beginthread’; did you mean ‘OpenThread’? [-Werror=implicit-function-declaration] thandle = _beginthread(func, 0, arg); ^~~~~~~~~~~~ OpenThread WTF?
-上网找原因，Gihub上有人遇到了同样的问题 issue，基本没什么办法，建议更换MinGW
+上网找原因，Gihub上有人遇到了同样的问题，基本没什么办法，建议更换MinGW
 好吧，再装个MinGW，MinGW是32位的，如果想装64位的需要下载MinGW-W64
  这里也可以使用Golang官方推荐的TDM-GCC
  下载后安装，默认路径，arch选择x86_64，安装完成后设置 C:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin 到环境变量Path，别忘了把之前设置的cgywin的路径给删掉

@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MinGW on 随风潜入夜</title>
-    <link>https://microgap.github.io/tags/mingw.html</link>
-    <description>Recent content in MinGW on 随风潜入夜</description>
+    <title>golang on 随风潜入夜</title>
+    <link>https://microgap.github.io/tags/golang.html</link>
+    <description>Recent content in golang on 随风潜入夜</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Dec 2019 21:03:40 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 05 Dec 2019 16:02:41 +0800</lastBuildDate>
     
-	<atom:link href="https://microgap.github.io/tags/mingw/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://microgap.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang 开发Web Api Services热加载</title>
+      <link>https://microgap.github.io/2019/12/729b52d0df24f84447c24f1e491a0d3573b78d28.html</link>
+      <pubDate>Thu, 05 Dec 2019 16:02:41 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/2019/12/729b52d0df24f84447c24f1e491a0d3573b78d28.html</guid>
+      <description>学习Go语言开发Webservice Api过程中,每次想要看一下代码修改后的结果,都需要重新编译一次代码后才可以在浏览器看到结果,虽然VS Code的F5很好用,但还是想要减少一些手动操作,于是上网找解决办法😏.
+ 使用fswatch工具 参考 使用gin工具 Github  相关的实现方法不少,懒得找了,正巧,我用的web框架也叫gin,这里就用第二种方式吧
+安装gin工具
+go get -u github.com/codegangsta/gin 然后到项目根目录下输入命令
+gin run main.go [gin] Listening on port 3000 [gin] Building... 冲杯🍵等一下
+gin run main.go [gin] Listening on port 3000 [gin] Building... [gin] Build finished 两杯咖啡下肚,仍然停在这里,难道我打开方式不对? 浏览器打开 http://localhost:3000,&amp;ldquo;该网页无法正常运作&amp;rdquo;,好消息是后台有了新的进展
+[gin] Listening on port 3000 [gin] Building... [gin] Build finished 2019/12/05 16:44:25 http: proxy error: dial tcp [::1]:3001: connect: connection refused [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.</description>
+    </item>
     
     <item>
       <title>Golang 在 Windows 10 编译找不到 gcc 的解决方法</title>
