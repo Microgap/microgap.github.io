@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>json on 随风潜入夜</title>
+    <link>https://microgap.github.io/tags/json.html</link>
+    <description>Recent content in json on 随风潜入夜</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Dec 2019 12:10:54 +0800</lastBuildDate>
+    
+	<atom:link href="https://microgap.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang使用json库解码注意事项</title>
+      <link>https://microgap.github.io/2019/12/f2a283032e7a79bd415e0a797c41acb1ecd76209.html</link>
+      <pubDate>Fri, 13 Dec 2019 12:10:54 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/2019/12/f2a283032e7a79bd415e0a797c41acb1ecd76209.html</guid>
+      <description>type Response struct { Code int `json:&amp;#34;code&amp;#34;` Message string `json:&amp;#34;message&amp;#34;` } func main() { body := `{&amp;#34;code&amp;#34;: 100, &amp;#34;message&amp;#34;: &amp;#34;测试&amp;#34;} ` var r Response e := json.Unmarshal([]byte(body), &amp;amp;r) if e == nil { fmt.Printf(&amp;#34;%v&amp;#34;, r) } else { fmt.Printf(&amp;#34;error: %v&amp;#34;,e) } } /// 输出:{100 测试}  使用Golang的标准json库需要注意以下两点  由于go语言的struct类型默认允许所有属性都可以是空值,所以json的Unmarshal方法,只验证待解析内容是否为正确的json格式,而不验证目标类型是否与待解析内容匹配  type Response struct { Code int `json:&amp;#34;code1&amp;#34;` // 在解析内容中code1不存在,返回默认值0 	Message string `json:&amp;#34;message1&amp;#34;` // 在解析内容中message1不存在,返回默认值&amp;#34;&amp;#34; } func main() { body := `{&amp;#34;code&amp;#34;: 100, &amp;#34;message&amp;#34;: &amp;#34;测试&amp;#34;} ` var r Response e := json.</description>
+    </item>
+    
+  </channel>
+</rss>

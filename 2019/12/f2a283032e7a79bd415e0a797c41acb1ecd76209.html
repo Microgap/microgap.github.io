@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Golang使用json库解码注意事项 // 随风潜入夜</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.61.0-DEV" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://microgap.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-153799005-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Golang使用json库解码注意事项"/>
+<meta name="twitter:description" content="type Response struct { Code int `json:&#34;code&#34;` Message string `json:&#34;message&#34;` } func main() { body := `{&#34;code&#34;: 100, &#34;message&#34;: &#34;测试&#34;} ` var r Response e := json.Unmarshal([]byte(body), &amp;r) if e == nil { fmt.Printf(&#34;%v&#34;, r) } else { fmt.Printf(&#34;error: %v&#34;,e) } } /// 输出:{100 测试}  使用Golang的标准json库需要注意以下两点  由于go语言的struct类型默认允许所有属性都可以是空值,所以json的Unmarshal方法,只验证待解析内容是否为正确的json格式,而不验证目标类型是否与待解析内容匹配  type Response struct { Code int `json:&#34;code1&#34;` // 在解析内容中code1不存在,返回默认值0 	Message string `json:&#34;message1&#34;` // 在解析内容中message1不存在,返回默认值&#34;&#34; } func main() { body := `{&#34;code&#34;: 100, &#34;message&#34;: &#34;测试&#34;} ` var r Response e := json."/>
+
+    <meta property="og:title" content="Golang使用json库解码注意事项" />
+<meta property="og:description" content="type Response struct { Code int `json:&#34;code&#34;` Message string `json:&#34;message&#34;` } func main() { body := `{&#34;code&#34;: 100, &#34;message&#34;: &#34;测试&#34;} ` var r Response e := json.Unmarshal([]byte(body), &amp;r) if e == nil { fmt.Printf(&#34;%v&#34;, r) } else { fmt.Printf(&#34;error: %v&#34;,e) } } /// 输出:{100 测试}  使用Golang的标准json库需要注意以下两点  由于go语言的struct类型默认允许所有属性都可以是空值,所以json的Unmarshal方法,只验证待解析内容是否为正确的json格式,而不验证目标类型是否与待解析内容匹配  type Response struct { Code int `json:&#34;code1&#34;` // 在解析内容中code1不存在,返回默认值0 	Message string `json:&#34;message1&#34;` // 在解析内容中message1不存在,返回默认值&#34;&#34; } func main() { body := `{&#34;code&#34;: 100, &#34;message&#34;: &#34;测试&#34;} ` var r Response e := json." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://microgap.github.io/2019/12/f2a283032e7a79bd415e0a797c41acb1ecd76209.html" />
+<meta property="article:published_time" content="2019-12-13T12:10:54+08:00" />
+<meta property="article:modified_time" content="2019-12-13T13:57:39+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://microgap.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>随风潜入夜</h1>
+      <p>安不下心，放不开手</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/microgap" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Golang使用json库解码注意事项</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Dec 13, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://microgap.github.io/tags/golang.html">golang</a><a class="tag" href="https://microgap.github.io/tags/json.html">json</a></div></div>
+    </header>
+    <div class="post-content">
+      <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Response</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Code</span>    <span style="color:#66d9ef">int</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">json:&#34;code&#34;</span><span style="color:#e6db74">`</span>
+	<span style="color:#a6e22e">Message</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">json:&#34;message&#34;</span><span style="color:#e6db74">`</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">body</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">	</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#34;code&#34;: 100,
+</span><span style="color:#e6db74">	 &#34;message&#34;: &#34;测试&#34;}
+</span><span style="color:#e6db74">	</span><span style="color:#e6db74">`</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">r</span> <span style="color:#a6e22e">Response</span>
+	<span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>([]byte(<span style="color:#a6e22e">body</span>), <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">r</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">e</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+	  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v&#34;</span>, <span style="color:#a6e22e">r</span>)
+	} <span style="color:#66d9ef">else</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;error: %v&#34;</span>,<span style="color:#a6e22e">e</span>)
+	}
+}
+
+<span style="color:#75715e">/// 输出:{100 测试}
+</span><span style="color:#75715e"></span>
+</code></pre></div><h4 id="golangjson">使用Golang的标准json库需要注意以下两点</h4>
+<ol>
+<li>由于go语言的struct类型默认允许所有属性都可以是空值,所以json的Unmarshal方法,只验证待解析内容是否为正确的json格式,而不验证目标类型是否与待解析内容匹配</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Response</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Code</span>    <span style="color:#66d9ef">int</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">json:&#34;code1&#34;</span><span style="color:#e6db74">`</span> <span style="color:#75715e">// 在解析内容中code1不存在,返回默认值0
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Message</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">json:&#34;message1&#34;</span><span style="color:#e6db74">`</span> <span style="color:#75715e">// 在解析内容中message1不存在,返回默认值&#34;&#34;
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">body</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">	</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#34;code&#34;: 100,
+</span><span style="color:#e6db74">	 &#34;message&#34;: &#34;测试&#34;}
+</span><span style="color:#e6db74">	</span><span style="color:#e6db74">`</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">r</span> <span style="color:#a6e22e">Response</span>
+	<span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>([]byte(<span style="color:#a6e22e">body</span>), <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">r</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">e</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+	  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v&#34;</span>, <span style="color:#a6e22e">r</span>)
+	} <span style="color:#66d9ef">else</span> {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;error: %v&#34;</span>,<span style="color:#a6e22e">e</span>)
+	}
+}
+<span style="color:#75715e">/// 输出: {0 }
+</span></code></pre></div><ol start="2">
+<li>传入的目标类型不论是否为指针,均需要&amp;符号,否则解析结果为空</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Response</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Code</span>    <span style="color:#66d9ef">int</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">json:&#34;code&#34;</span><span style="color:#e6db74">`</span>
+	<span style="color:#a6e22e">Message</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">json:&#34;message&#34;</span><span style="color:#e6db74">`</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">body</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">	</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#34;code&#34;: 100,
+</span><span style="color:#e6db74">	 &#34;message&#34;: &#34;测试&#34;}
+</span><span style="color:#e6db74">	</span><span style="color:#e6db74">`</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Response</span>
+	<span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>([]byte(<span style="color:#a6e22e">body</span>), <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">r</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">e</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+	  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v&#34;</span>, <span style="color:#a6e22e">r</span>)
+	} <span style="color:#66d9ef">else</span> {
+	  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;error: %v&#34;</span>,<span style="color:#a6e22e">e</span>)
+	}
+}
+
+<span style="color:#75715e">/// 输出:{100 测试}
+</span></code></pre></div><p>在使用时需要注意,解析完成后进行额外的必要字段验证,确保解析内容与期望类型一致</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Code</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#e6db74">&#34;解析失败&#34;</span>)
+}
+</code></pre></div><p>或者实现json的接口来进行限制</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Response</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Code</span>    <span style="color:#66d9ef">int</span>    <span style="color:#e6db74">`</span><span style="color:#e6db74">json:&#34;code1&#34;</span><span style="color:#e6db74">`</span>
+	<span style="color:#a6e22e">Message</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">json:&#34;message&#34;</span><span style="color:#e6db74">`</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">response</span> <span style="color:#a6e22e">Response</span>
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">r</span> <span style="color:#a6e22e">Response</span>) <span style="color:#a6e22e">UnmarshalJSON</span>(<span style="color:#a6e22e">b</span> []<span style="color:#66d9ef">byte</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">response</span>
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>(<span style="color:#a6e22e">b</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">c</span>); <span style="color:#a6e22e">e</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">e</span>
+	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Code</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;解析失败,Code字段不存在&#34;</span>)
+	}
+	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Code</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Code</span>
+	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Message</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Message</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">body</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">	</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#34;code&#34;: 100,
+</span><span style="color:#e6db74">	 &#34;message&#34;: &#34;测试&#34;}
+</span><span style="color:#e6db74">	</span><span style="color:#e6db74">`</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">r</span> <span style="color:#a6e22e">Response</span>
+	<span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>([]byte(<span style="color:#a6e22e">body</span>), <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">r</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">e</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v&#34;</span>, <span style="color:#a6e22e">r</span>)
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Code</span>)
+	} <span style="color:#66d9ef">else</span> {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;error: %v&#34;</span>, <span style="color:#a6e22e">e</span>)
+	}
+}
+
+<span style="color:#75715e">// 输出:error: 解析失败,Code字段不存在
+</span></code></pre></div>
+    </div>
+    <div class="post-footer">
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "microgap" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
