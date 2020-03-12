@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>K3 on 随风潜入夜</title>
+    <link>https://microgap.github.io/tags/k3.html</link>
+    <description>Recent content in K3 on 随风潜入夜</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Dec 2019 22:56:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://microgap.github.io/tags/k3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>编译OpenWRT固件</title>
+      <link>https://microgap.github.io/2019/12/8e8485482fc7b12f20d7d9fd8caa1b012dd01a23.html</link>
+      <pubDate>Fri, 13 Dec 2019 22:56:15 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/2019/12/8e8485482fc7b12f20d7d9fd8caa1b012dd01a23.html</guid>
+      <description>折腾之路： 编译一个自用的斐讯K3固件 近两天同事拿出了他那翻了车的K3，想刷个固件折腾个“你懂的”，然后拿回家去用。看他折腾的挺欢快，我也想把那同一批翻车的K3重新刷个固件换换口味。观摩他刷过的几个版本的固件，要么直接不好用，要么是预装的软件包实在过多，不是很爽快，于是决定自己找源码来编译一份精简的，说折腾就折腾
+ 安装Docker——Windows环境默认无法编译Linux软件，需要一些额外的帮助。可以选择安装cygwin，也可以用VM虚拟机装个linux，我选择了Docker   安装完Docker并启动后，如果提示直接点击“OK”键，然后等待一会儿电脑自动重启后即可使用。
+ 安装Ubuntu——下载并安全完Docker以后，运行 Powershell 拉取一个Ubuntu最新的Docker镜像  PS C:\WINDOWS\system32&amp;gt; docker pull ubuntu:latest PS C:\WINDOWS\system32&amp;gt; docker pull ubuntu:latest latest: Pulling from library/ubuntu 7ddbc47eeb70: Pull complete c1bbdc448b72: Pull complete 8c3b70e39044: Pull complete 45d437916d57: Pull complete Digest: sha256:6e9f67fa63b0323e9a1e587fd71c561ba48a034504fb804fd26fd8800039835d Status: Downloaded newer image for ubuntu:latest 运行一个基于ubuntu镜像的container——新建一个文件夹，挂载到容器中，用来保存OpenWRT的源码以及编译后的固件  PS C:\WINDOWS\system32&amp;gt; E: PS E:\&amp;gt; mkdir Docker\target PS E:\&amp;gt; cd Docker PS E:\Docker&amp;gt; PS E:\Docker&amp;gt; docker run -it --name openwrt -v E:/Docker/target:/app ubuntu:latest 如果Docker未设置过共享磁盘，此时右下角会弹出打开Docker的Setting界面，选择Shared Drives选项卡，选择E盘，点击Apply 输入用户名密码后确认。</description>
+    </item>
+    
+  </channel>
+</rss>

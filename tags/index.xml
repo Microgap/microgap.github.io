@@ -6,10 +6,46 @@
     <description>Recent content in Tags on 随风潜入夜</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Dec 2019 12:10:54 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 13 Dec 2019 22:56:15 +0800</lastBuildDate>
     
 	<atom:link href="https://microgap.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>K3</title>
+      <link>https://microgap.github.io/tags/k3.html</link>
+      <pubDate>Fri, 13 Dec 2019 22:56:15 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/tags/k3.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LEAN</title>
+      <link>https://microgap.github.io/tags/lean.html</link>
+      <pubDate>Fri, 13 Dec 2019 22:56:15 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/tags/lean.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LEDE</title>
+      <link>https://microgap.github.io/tags/lede.html</link>
+      <pubDate>Fri, 13 Dec 2019 22:56:15 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/tags/lede.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenWRT</title>
+      <link>https://microgap.github.io/tags/openwrt.html</link>
+      <pubDate>Fri, 13 Dec 2019 22:56:15 +0800</pubDate>
+      
+      <guid>https://microgap.github.io/tags/openwrt.html</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>golang</title>

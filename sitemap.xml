@@ -3,8 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://microgap.github.io/posts.html</loc>
+    <lastmod>2020-03-12T13:42:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://microgap.github.io/2020/03/80d66b17f0c9c60b8acbec95e7f2360293dc708c.html</loc>
+    <lastmod>2020-03-12T13:42:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://microgap.github.io/</loc>
+    <lastmod>2020-03-12T13:42:10+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://microgap.github.io/categories.html</loc>
-    <lastmod>2019-12-13T13:57:39+08:00</lastmod>
+    <lastmod>2020-03-12T13:21:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://microgap.github.io/tags/k3.html</loc>
+    <lastmod>2020-03-12T13:21:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://microgap.github.io/tags/lean.html</loc>
+    <lastmod>2020-03-12T13:21:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://microgap.github.io/tags/lede.html</loc>
+    <lastmod>2020-03-12T13:21:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://microgap.github.io/tags/openwrt.html</loc>
+    <lastmod>2020-03-12T13:21:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://microgap.github.io/tags.html</loc>
+    <lastmod>2020-03-12T13:21:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://microgap.github.io/categories/%E6%8A%98%E8%85%BE.html</loc>
+    <lastmod>2020-03-12T13:21:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://microgap.github.io/2019/12/8e8485482fc7b12f20d7d9fd8caa1b012dd01a23.html</loc>
+    <lastmod>2020-03-12T13:21:47+08:00</lastmod>
   </url>
   
   <url>
@@ -23,22 +73,7 @@
   </url>
   
   <url>
-    <loc>https://microgap.github.io/posts.html</loc>
-    <lastmod>2019-12-13T13:57:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://microgap.github.io/tags.html</loc>
-    <lastmod>2019-12-13T13:57:39+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://microgap.github.io/categories/%E5%A1%AB%E5%9D%91.html</loc>
-    <lastmod>2019-12-13T13:57:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://microgap.github.io/</loc>
     <lastmod>2019-12-13T13:57:39+08:00</lastmod>
   </url>
   

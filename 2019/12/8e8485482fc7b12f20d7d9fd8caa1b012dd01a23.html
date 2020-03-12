@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>编译OpenWRT固件 // 随风潜入夜</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.61.0-DEV" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://microgap.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-153799005-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="编译OpenWRT固件"/>
+<meta name="twitter:description" content="折腾之路： 编译一个自用的斐讯K3固件 近两天同事拿出了他那翻了车的K3，想刷个固件折腾个“你懂的”，然后拿回家去用。看他折腾的挺欢快，我也想把那同一批翻车的K3重新刷个固件换换口味。观摩他刷过的几个版本的固件，要么直接不好用，要么是预装的软件包实在过多，不是很爽快，于是决定自己找源码来编译一份精简的，说折腾就折腾
+ 安装Docker——Windows环境默认无法编译Linux软件，需要一些额外的帮助。可以选择安装cygwin，也可以用VM虚拟机装个linux，我选择了Docker   安装完Docker并启动后，如果提示直接点击“OK”键，然后等待一会儿电脑自动重启后即可使用。
+ 安装Ubuntu——下载并安全完Docker以后，运行 Powershell 拉取一个Ubuntu最新的Docker镜像  PS C:\WINDOWS\system32&gt; docker pull ubuntu:latest PS C:\WINDOWS\system32&gt; docker pull ubuntu:latest latest: Pulling from library/ubuntu 7ddbc47eeb70: Pull complete c1bbdc448b72: Pull complete 8c3b70e39044: Pull complete 45d437916d57: Pull complete Digest: sha256:6e9f67fa63b0323e9a1e587fd71c561ba48a034504fb804fd26fd8800039835d Status: Downloaded newer image for ubuntu:latest 运行一个基于ubuntu镜像的container——新建一个文件夹，挂载到容器中，用来保存OpenWRT的源码以及编译后的固件  PS C:\WINDOWS\system32&gt; E: PS E:\&gt; mkdir Docker\target PS E:\&gt; cd Docker PS E:\Docker&gt; PS E:\Docker&gt; docker run -it --name openwrt -v E:/Docker/target:/app ubuntu:latest 如果Docker未设置过共享磁盘，此时右下角会弹出打开Docker的Setting界面，选择Shared Drives选项卡，选择E盘，点击Apply 输入用户名密码后确认。"/>
+
+    <meta property="og:title" content="编译OpenWRT固件" />
+<meta property="og:description" content="折腾之路： 编译一个自用的斐讯K3固件 近两天同事拿出了他那翻了车的K3，想刷个固件折腾个“你懂的”，然后拿回家去用。看他折腾的挺欢快，我也想把那同一批翻车的K3重新刷个固件换换口味。观摩他刷过的几个版本的固件，要么直接不好用，要么是预装的软件包实在过多，不是很爽快，于是决定自己找源码来编译一份精简的，说折腾就折腾
+ 安装Docker——Windows环境默认无法编译Linux软件，需要一些额外的帮助。可以选择安装cygwin，也可以用VM虚拟机装个linux，我选择了Docker   安装完Docker并启动后，如果提示直接点击“OK”键，然后等待一会儿电脑自动重启后即可使用。
+ 安装Ubuntu——下载并安全完Docker以后，运行 Powershell 拉取一个Ubuntu最新的Docker镜像  PS C:\WINDOWS\system32&gt; docker pull ubuntu:latest PS C:\WINDOWS\system32&gt; docker pull ubuntu:latest latest: Pulling from library/ubuntu 7ddbc47eeb70: Pull complete c1bbdc448b72: Pull complete 8c3b70e39044: Pull complete 45d437916d57: Pull complete Digest: sha256:6e9f67fa63b0323e9a1e587fd71c561ba48a034504fb804fd26fd8800039835d Status: Downloaded newer image for ubuntu:latest 运行一个基于ubuntu镜像的container——新建一个文件夹，挂载到容器中，用来保存OpenWRT的源码以及编译后的固件  PS C:\WINDOWS\system32&gt; E: PS E:\&gt; mkdir Docker\target PS E:\&gt; cd Docker PS E:\Docker&gt; PS E:\Docker&gt; docker run -it --name openwrt -v E:/Docker/target:/app ubuntu:latest 如果Docker未设置过共享磁盘，此时右下角会弹出打开Docker的Setting界面，选择Shared Drives选项卡，选择E盘，点击Apply 输入用户名密码后确认。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://microgap.github.io/2019/12/8e8485482fc7b12f20d7d9fd8caa1b012dd01a23.html" />
+<meta property="article:published_time" content="2019-12-14T22:56:15+08:00" />
+<meta property="article:modified_time" content="2020-03-12T13:21:47+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://microgap.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>随风潜入夜</h1>
+      <p>安不下心，放不开手</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/microgap" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">编译OpenWRT固件</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Dec 14, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://microgap.github.io/tags/openwrt.html">OpenWRT</a><a class="tag" href="https://microgap.github.io/tags/lede.html">LEDE</a><a class="tag" href="https://microgap.github.io/tags/lean.html">LEAN</a><a class="tag" href="https://microgap.github.io/tags/k3.html">K3</a></div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="-k3">折腾之路： 编译一个自用的斐讯K3固件</h3>
+<p>近两天同事拿出了他那翻了车的K3，想刷个固件折腾个“你懂的”，然后拿回家去用。看他折腾的挺欢快，我也想把那同一批翻车的K3重新刷个固件换换口味。观摩他刷过的几个版本的固件，要么直接不好用，要么是预装的软件包实在过多，不是很爽快，于是决定自己找源码来编译一份精简的，说折腾就折腾</p>
+<ol>
+<li>安装Docker——Windows环境默认无法编译Linux软件，需要一些额外的帮助。可以选择安装cygwin，也可以用VM虚拟机装个linux，我选择了<a href="https://www.docker.com/products/docker-desktop">Docker</a></li>
+</ol>
+<blockquote>
+<p>安装完Docker并启动后，如果提示<img src="/images/Docker%E5%87%BA%E9%94%99.png" alt="Features not enable">  直接点击“OK”键，然后等待一会儿电脑自动重启后即可使用。</p>
+</blockquote>
+<ol start="2">
+<li>安装Ubuntu——下载并安全完Docker以后，运行 Powershell 拉取一个Ubuntu最新的Docker镜像</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt; docker pull ubuntu:latest
+PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt; docker pull ubuntu:latest
+latest: Pulling from library/ubuntu
+7ddbc47eeb70: Pull complete                                                              
+c1bbdc448b72: Pull complete                                                              
+8c3b70e39044: Pull complete                                                              
+45d437916d57: Pull complete                                                              
+Digest: sha256:6e9f67fa63b0323e9a1e587fd71c561ba48a034504fb804fd26fd8800039835d
+Status: Downloaded newer image <span style="color:#66d9ef">for</span> ubuntu:latest
+</code></pre></div><ol start="3">
+<li>运行一个基于ubuntu镜像的container——新建一个文件夹，挂载到容器中，用来保存OpenWRT的源码以及编译后的固件</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt; E:
+PS E:<span style="color:#ae81ff">\&gt;</span> mkdir Docker<span style="color:#ae81ff">\t</span>arget
+PS E:<span style="color:#ae81ff">\&gt;</span> cd Docker
+PS E:<span style="color:#ae81ff">\D</span>ocker&gt;
+PS E:<span style="color:#ae81ff">\D</span>ocker&gt; docker run -it --name openwrt -v E:/Docker/target:/app ubuntu:latest
+
+</code></pre></div><p>如果Docker未设置过共享磁盘，此时右下角会弹出<img src="/images/Docker%E5%85%B1%E4%BA%AB%E7%A1%AC%E7%9B%98.png" alt="Docker共享"> 打开Docker的Setting界面，选择Shared Drives选项卡，选择E盘，点击Apply <img src="/images/Docker%E5%85%B1%E4%BA%AB.png" alt="Docker共享硬盘"></p>
+<p>输入用户名密码后确认。</p>
+<p>再次运行命令，成功启动Container</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PS E:<span style="color:#ae81ff">\D</span>ocker&gt; docker run -it --name openwrt -v E:/Docker/target:/app ubuntu:latest
+root@f4648f59b7ec:/#                                                                     
+</code></pre></div><ol start="4">
+<li>下载固件源码——固件我选择了Lean的<a href="https://github.com/coolsnowwolf/lede">LEDE</a></li>
+</ol>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>不要用 root 用户 git 和编译！！！</li>
+<li>国内用户编译前最好准备好梯子</li>
+<li>默认登陆IP 192.168.1.1, 密码 password</li>
+</ol>
+</blockquote>
+<p>新建一个Powershell，进入E:\Docker\target  运行git</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PS E:<span style="color:#ae81ff">\D</span>ocker<span style="color:#ae81ff">\t</span>arget&gt; git clone https://github.com/coolsnowwolf/lede.git
+</code></pre></div><ol start="5">
+<li>下载源码的过程中，配置ubuntu的编译环境——lean源码介绍中说不能用root用户编译，原因不清楚，先新建一个用户并设置密码</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@f4648f59b7ec:/# useradd openwrt
+root@f4648f59b7ec:/# passwd openwrt
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+root@f4648f59b7ec:/#
+</code></pre></div><ol start="6">
+<li>更新系统环境及安装必要依赖</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@f4648f59b7ec:/# apt update
+...
+...
+...
+root@f4648f59b7ec:/# apt install -y wget sudo vim
+...
+...
+...
+root@f4648f59b7ec:/# cd /etc/apt/sources.list.d
+root@f4648f59b7ec:/etc/apt/sources.list.d# vim ali.list
+</code></pre></div><p>添加阿里源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+</code></pre></div><p>保存，退出，再次更新apt</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@f4648f59b7ec:/etc/apt/sources.list.d# apt update
+</code></pre></div><p>修改sudoers文件，添加新建的用户openwrt</p>
+<pre><code>(1)为sudoers增加写入权限
+    chmod +w /etc/sudoers
+    vim /etc/sudoers
+(2)为用户XXX添加读写权限
+    # User privilege specification 
+    root　ALL=(ALL:ALL) ALL
+    openwrt ALL=(ALL:ALL) ALL    // 这一行为新添加的代码
+(3)将sudoers文件的操作权限改为只读模式
+    chmod -w /etc/sudoers
+</code></pre><p>然后切换用户</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@f4648f59b7ec:/# su openwrt
+$
+</code></pre></div><p>安装编译环境及依赖项</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler
+</code></pre></div><ol start="7">
+<li>进入之前下载好的lede文件夹</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd /app/lede
+</code></pre></div><ol start="8">
+<li>更新包</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./scripts/feeds update -a 
+...
+...
+...
+Checking <span style="color:#e6db74">&#39;python&#39;</span>... ok.
+Checking <span style="color:#e6db74">&#39;git&#39;</span>... ok.
+Checking <span style="color:#e6db74">&#39;file&#39;</span>... ok.
+Checking <span style="color:#e6db74">&#39;ldconfig-stub&#39;</span>... ok.
+
+Build dependency: OpenWrt can only be built on a <span style="color:#66d9ef">case</span>-sensitive filesystem
+...
+...
+</code></pre></div><p>呃，坏了，编译环境需要在大小写敏感的条件下进行，虽然Ubuntu系统默认是大小写敏感的，但Windows并不是。这里两种解决方法
+1. 在ubuntu系统里将源码copy到其它目录中进行编译，编译完之后再copy回来
+2. 将挂载的文件夹转变成大小写敏感的
+为了避免以后折腾其它东西的时候再遇上这问题，我选择了第二种方式。</p>
+<p>按https://docs.microsoft.com/zh-cn/windows/wsl/install-win10 说明先安装一个Linux子系统</p>
+<p>然后执行命令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">fsutil.exe file SetCaseSensitiveInfo E:<span style="color:#ae81ff">\D</span>ocker enable
+</code></pre></div><p>好吧，这种方法太麻烦，我改用第1种方法了，即把文件夹copy到其它目录下去编译</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$sudo cp /app/lede /home/lede
+$cd /home/lede
+$./scripts/feeds update -a 
+</code></pre></div><p>如果出错，并且提示没有访问权限，不要使用sudo提升权限来运行，编译命令会树洞到root权限可失败，正确的做法是修改文件夹所属权为当前用户</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$cd /home
+$sudo chown -R openwrt /home/lede
+$./scripts/feeds update -a 
+$./scripts/feeds install -a
+make menuconfig
+make -j1 V<span style="color:#f92672">=</span>s
+</code></pre></div><p>在menuconfig中，target system选择bcm53xx ，target profile选K3，Luci中选择需要的软件包，然后冲杯咖啡等两到三个小时就差不多了。
+编译出的固件还木有测试，回头测试如果有问题再记录~！~</p>
+<p><img src="/images/%E7%BC%96%E8%AF%91%E8%8F%9C%E5%8D%95.png" alt="编译菜单"></p>
+
+    </div>
+    <div class="post-footer">
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "microgap" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
